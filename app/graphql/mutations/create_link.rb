@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Mutations
+  # Mutation to create Link
   class CreateLink < BaseMutation
     argument :description, String, required: true
     argument :url, String, required: true

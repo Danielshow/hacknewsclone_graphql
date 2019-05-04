@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 # Use graphQL
 
 gem 'graphql'
@@ -58,6 +58,7 @@ group :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
   gem 'faker', '~> 1.8', '>= 1.8.7'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'rspec-graphql_matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
