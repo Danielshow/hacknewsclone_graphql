@@ -8,7 +8,6 @@ class GraphqlController < ApplicationController
       current_user: current_user,
     }
     result = HackernewscloneSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
-    binding.pry
     render json: result
   rescue => e
     raise e unless Rails.env.development?
@@ -51,6 +50,7 @@ class GraphqlController < ApplicationController
 
   def current_user
     user = decode_token
-    User.find_by(id: user.user_id)
+    return nil unless user['userId']
+    User.find_by(id: user['userId'])
   end
 end
