@@ -5,9 +5,10 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user,
     }
     result = HackernewscloneSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    binding.pry
     render json: result
   rescue => e
     raise e unless Rails.env.development?
@@ -39,5 +40,17 @@ class GraphqlController < ApplicationController
     logger.error e.backtrace.join("\n")
 
     render json: { error: { message: e.message, backtrace: e.backtrace }, data: {} }, status: 500
+  end
+
+  def decode_token
+    token = request.headers['Authorization']
+    return nil unless token
+    token = token.split(' ')[1]
+    JsonWebToken.decode(token)
+  end
+
+  def current_user
+    user = decode_token
+    User.find_by(id: user.user_id)
   end
 end

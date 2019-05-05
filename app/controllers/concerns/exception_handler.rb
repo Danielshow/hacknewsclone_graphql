@@ -17,10 +17,10 @@ module ExceptionHander
   private
 
   def unauthorized_request(err)
-    { error: { message: err.message, status: 401 } }
+    render json: { error: { message: err.message }, data: {} }, status: 401
   end
 
   def four_twenty_two(err)
-    { error: { message: err.messgae, status: 422 } }
+    render json: { error: { message: err.messgae }, data: {} }, status: 422
   end
 end
