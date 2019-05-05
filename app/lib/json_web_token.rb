@@ -11,7 +11,7 @@ class JsonWebToken
 
   def self.decode(token)
     JWT.decode(token, JWT_SECRET)
-  rescue JWT::DecodeError => e
+  rescue JWT::DecodeError, JWT::VerificationError, JWT::ExpiredSignature => e
     raise ExceptionHandler::InvalidToken, e.message
   end
 end
