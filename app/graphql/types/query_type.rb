@@ -4,7 +4,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :all_links, [LinkType], null: false
+    field :all_links, function: Resolvers::LinkSearch 
     field :me, UserType, null: true
 
     def all_links

@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use graphQL
+gem 'search_object'
+gem 'search_object_graphql'
 
 gem 'graphql'
 gem 'figaro'
